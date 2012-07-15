@@ -40,7 +40,7 @@ For more information, please refer to <http://unlicense.org/>
         }
         return catalogEntry.singleton;
     };
-    context.define = function(key, factory) {
+    context.provide = function(key, factory) {
         catalog[key] = { factory: factory };
     };
 })(this);
