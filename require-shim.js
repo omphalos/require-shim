@@ -35,10 +35,10 @@ For more information, please refer to <http://unlicense.org/>
             for(var x in catalog) { message.push('"' + x + '"'); } 
             throw 'failed to resolve ["' + key + '"]; current keys are [' + message + ']'; 
         }
-        if(!catalogEntry.instance) {            
-            catalogEntry.factory(context.require, catalogEntry.instance = {}); 
+        if(!catalogEntry.singleton) {            
+            catalogEntry.factory(context.require, catalogEntry.singleton = {}); 
         }
-        return catalogEntry.instance;
+        return catalogEntry.singleton;
     };
     context.define = function(key, factory) {
         catalog[key] = { factory: factory };
