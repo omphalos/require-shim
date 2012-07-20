@@ -27,6 +27,7 @@ For more information, please refer to <http://unlicense.org/>
 
 (function(context) {
     "use strict";
+    
     var catalog = {}; 
     context.require = function(key) { 
         var catalogEntry = catalog[key];
@@ -35,12 +36,37 @@ For more information, please refer to <http://unlicense.org/>
             for(var x in catalog) { message.push('"' + x + '"'); } 
             throw 'failed to resolve ["' + key + '"]; current keys are [' + message + ']'; 
         }
-        if(!catalogEntry.singleton) {            
-            catalogEntry.factory(context.require, catalogEntry.singleton = {}); 
+        if(!catalogEntry.singleton) {  
+            var relativeRequire = function(key) { 
+                var absoluteKey = key.substr(0, 2) == './' ?
+                    catalogEntry.path + '/' + key.substr(2, key.length) :
+                    key;
+                return context.require(absoluteKey);
+            };
+            catalogEntry.factory(relativeRequire, catalogEntry.singleton = {}); 
         }
         return catalogEntry.singleton;
     };
-    context.provide = function(key, factory) {
-        catalog[key] = { factory: factory };
+    
+    context.provide = function() {
+        var path, key, factory;
+        if(arguments.length == 2) {
+            path = '';
+            key = arguments[0];
+            factory = arguments[1];
+        }
+        else if(arguments.length == 3) {
+            path = arguments[0];            
+            key = path + '/' + arguments[1];
+            factory = arguments[2];
+        } 
+        else {
+            throw'';
+        }
+        catalog[key] = { 
+            path: path,
+            factory: factory 
+        };
     };
+    
 })(this);
