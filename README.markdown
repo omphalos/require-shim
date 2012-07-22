@@ -1,5 +1,5 @@
 
-This is a simple javascript shim to support **require** in the browser.
+This is a simple javascript shim to implement require in the browser.
 
 Usage
 =====
@@ -81,6 +81,17 @@ How it works
 
 Modules are lazily constructed.
 
+Using Common JS modules (like Node.js) in the browser
+=====================================================
+
+If you want to use something like a Node.js module in your browser, you will need to manually wrap the call in a provide statement.
+
+For example:
+
+	provide('module', function(require, exports) {
+	// the code you're wrapping
+	});
+
 Peaceful Disclaimer
 ===================
 
@@ -96,15 +107,4 @@ require-shim does not:
 * Minify anything
 * Use sorcery of any kind
 
-These are perfectly fine libraries out there that do these things.  Many people feel that features like these are important.  That is okay!  Please use whatever library you find the most enjoyable :)
-
-Using Common JS modules (like Node.js) in the browser
-=====================================================
-
-If you want to use something like a Node.js module in your browser, you will need to manually wrap the call in a provide statement.
-
-For example:
-
-	provide('module', function(require, exports) {
-	// the code you're wrapping
-	});
+These are perfectly fine libraries out there that do these things.  Many people feel that features like these are important.  That is okay!  Please use whatever library will make your time spent programming the most enjoyable :)
