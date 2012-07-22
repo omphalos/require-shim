@@ -1,4 +1,5 @@
 
+
 This is a simple javascript shim to implement require in the browser.
 
 Usage
@@ -16,7 +17,7 @@ Use **provide** to define a module, in javascript:
 
 Use **require** to import a module, in javascript:
 
-   var yourModule = require(nameOfTheModuleYouWantToImport);
+    var yourModule = require(nameOfTheModuleYouWantToImport);
 
 Inside of **provide** you can use **exports** to expose functionality to other parts of your program:
 
@@ -40,7 +41,7 @@ The following example defines a module called 'my-hello-world', adds a property 
 
 **Importing one module into another**
 
-The following example defines a module called 'my-hello-world', adds a property called 'message' to it, and prints it on the screen.
+The following example references one module from another:
 
 	// define the first module
 	provide('my-hello-world', function(require, exports) {
@@ -79,18 +80,20 @@ How it works
 
 **require** opens the catalog, looks for a module name and returns the module you asked for.
 
-Modules are lazily constructed.
+Modules are lazily constructed.  That's it!
 
 Using Common JS modules (like Node.js) in the browser
 =====================================================
 
-If you want to use something like a Node.js module in your browser, you will need to manually wrap the call in a provide statement.
+If you want to use something like a Node.js module in your browser, you can manually wrap the files you need in provide statements before referencing them in the browser.
 
 For example:
 
 	provide('module', function(require, exports) {
-	// the code you're wrapping
+	// the node.js (or whatever) code you're wrapping
 	});
+
+You could also do this using your web server or a custom build script if desired.
 
 Peaceful Disclaimer
 ===================
@@ -107,4 +110,5 @@ require-shim does not:
 * Minify anything
 * Use sorcery of any kind
 
-These are perfectly fine libraries out there that do these things.  Many people feel that features like these are important.  That is okay!  Please use whatever library will make your time spent programming the most enjoyable :)
+These are perfectly fine libraries out there that do these things.  Many people feel that features like these are important.  That is okay!  Please use whatever library you enjoy the most :)
+
