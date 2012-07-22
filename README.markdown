@@ -1,5 +1,4 @@
 
-
 This is a simple javascript shim to implement require in the browser.
 
 Usage
@@ -30,7 +29,7 @@ Examples
 
 **Hello world**
 
-The following example defines a module called 'my-hello-world', adds a property called 'message' to it, and prints it on the screen.
+The following example defines a module called 'my-hello-world', adds a property called 'message' to it, and prints it.
 
 	provide('my-hello-world', function(require, exports) {
 		exports.message = 'hello world';
@@ -110,5 +109,5 @@ require-shim does not:
 * Minify anything
 * Use sorcery of any kind
 
-These are perfectly fine libraries out there that do these things.  Many people feel that features like these are important.  That is okay!  Please use whatever library you enjoy the most :)
+These are perfectly fine libraries out there that do these kinds of things.  Many people feel that features like these are important.  That is okay!  Please use whatever library you like the most :)
 
