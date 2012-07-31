@@ -58,11 +58,11 @@
             };
             
             // initialize the singleton (this will break dependency cycles)
-            catalogEntry.singleton = {};
-            catalogEntry.factory(relativeRequire, catalogEntry.singleton); // invoke the factory method
+            catalogEntry.singleton = { exports: {} };
+            catalogEntry.factory(relativeRequire, catalogEntry.singleton.exports, catalogEntry.singleton); // invoke the factory method
         }
         
-        return catalogEntry.singleton;
+        return catalogEntry.singleton.exports;
     };
     
     context.provide = function(key, factory) {
