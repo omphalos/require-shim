@@ -1,4 +1,3 @@
-
 This is a simple javascript shim to implement require in the browser.
 
 Usage
@@ -79,7 +78,9 @@ How it works
 
 **require** opens the catalog, looks for a module name and returns the module you asked for.
 
-Modules are lazily constructed.  That's it!
+Modules are lazily constructed.  
+
+That's it.
 
 Using Common JS modules (like Node.js) in the browser
 =====================================================
