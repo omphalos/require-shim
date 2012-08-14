@@ -4,7 +4,7 @@
     var catalog = {}; // the catalog tracks all the modules that have been defined
     
     // require imports functionality
-    context.require = function(key) {
+    context.require = function(key) {		
     
         var catalogEntry = catalog[key];
         
@@ -64,6 +64,7 @@
         
         return catalogEntry.singleton.exports;
     };
+	context.require.catalog = catalog;
     
     context.provide = function(key, factory) {
     
